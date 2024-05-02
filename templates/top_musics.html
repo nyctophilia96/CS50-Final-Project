@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Your Top Tracks
+{% endblock %}
+
+{% block main %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Top Musics</title>
+        <style>
+            /* CSS Stilleri buraya */
+            body {
+                font-family: Arial, sans-serif;
+            }
+            .music-list {
+                list-style-type: none;
+                padding: 0;
+            }
+            .music-item {
+                padding: 10px;
+                border-bottom: 1px solid #ccc;
+            }
+            .music-item:hover {
+                background-color: #f4f4f4;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Top Musics</h1>
+        <ul class="music-list">
+            {% for track in top_tracks %}
+                <li class="music-item">
+                    <img src="{{ track.image_url }}" alt="{{ track.name }} artwork" width="100">
+                    <div>
+                        <h3>{{ track.name }}</h3>
+                        <p>{{ track.artist }}</p>
+                        <p>Popularity: {{ track.popularity }}</p>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </body>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Your Top Artists
+{% endblock %}
+
+{% block main %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Top Artists</title>
+        <style>
+            /* CSS Stilleri buraya */
+            body {
+                font-family: Arial, sans-serif;
+            }
+            .music-list {
+                list-style-type: none;
+                padding: 0;
+            }
+            .music-item {
+                padding: 10px;
+                border-bottom: 1px solid #ccc;
+            }
+            .music-item:hover {
+                background-color: #f4f4f4;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Top Artists</h1>
+        <ul class="music-list">
+            {% for artist in top_artists %}
+                <li class="music-item">
+                    <img src="{{ artist.image_url }}" alt="{{ artist.name }} artwork" width="100">
+                    <div>
+                        <h3>{{ artist.name }}</h3>
+                        <p>Followers: {{ artist.followers }}</p>
+                        <p>Genres: {{ artist.genres }}</p>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </body>
+{% endblock %}
